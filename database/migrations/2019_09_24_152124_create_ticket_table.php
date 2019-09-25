@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCurrencyTable extends Migration {
+class CreateTicketTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,10 @@ class CreateCurrencyTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Currency', function(Blueprint $table)
+		Schema::create('ticket', function(Blueprint $table)
 		{
-			$table->bigInteger('Id')->primary('PK__Currency__3214EC076E2E6F6C');
-			$table->string('Name');
+			$table->bigInteger('Id')->primary();
 			$table->string('Code');
-			$table->integer('PriceIDR');
 		});
 	}
 
@@ -29,7 +27,7 @@ class CreateCurrencyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Currency');
+		Schema::drop('ticket');
 	}
 
 }

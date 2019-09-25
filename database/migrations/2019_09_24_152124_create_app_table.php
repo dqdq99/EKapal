@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAPPTable extends Migration {
+class CreateAppTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,17 @@ class CreateAPPTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('APP', function(Blueprint $table)
+		Schema::create('app', function(Blueprint $table)
 		{
-			$table->bigInteger('Id')->primary('PK__Ship__3214EC071E05F635');
+			$table->bigInteger('Id')->primary();
 			$table->string('Name');
-			$table->bigInteger('FileId');
-			$table->bigInteger('CategoryId');
+			$table->bigInteger('CategoryId')->index('CategoryFK');
 			$table->dateTime('Date');
 			$table->string('Heading');
-			$table->text('Description', 16)->nullable();
+			$table->text('Description')->nullable();
 			$table->bigInteger('Capacity');
-			$table->bigInteger('CurrencyId');
-			$table->integer('Price');
+			$table->bigInteger('CurrencyId')->index('CurrencyFK');
+			$table->decimal('Price', 19, 4);
 			$table->bigInteger('UserId');
 			$table->bigInteger('CreateBy')->nullable();
 			$table->date('CreateDate')->nullable();
@@ -40,7 +39,7 @@ class CreateAPPTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('APP');
+		Schema::drop('app');
 	}
 
 }
